@@ -32,8 +32,8 @@ let raquetada;
 let ponto;
 
 function preload(){
-  ponto = loadSound("ponto.mp3");
-  raquetada = loadSound("raquetada.mp3");
+ // ponto = loadSound("ponto.mp3");
+//sw  raquetada = loadSound("raquetada.mp3");
 }
 
 function setup() {
@@ -42,14 +42,15 @@ function setup() {
 
 function draw() {
   background(0);
-  mostraBolinha(); 
+   mostraBolinha(); 
   movimentaBolinha();
   verificaColisaoBorda();
   mostraRaquete(xRaquete, yRaquete);
   mostraRaquete(xRaquete2, yRaquete2);
   movimentaRaquete1();
-  movimentaRaquete2();
-  verificaColisaoRaquete(xRaquete, yRaquete);          verificaColisaoRaquete(xRaquete2, yRaquete2);
+  movimentaRaqueteP2();
+  verificaColisaoRaquete(xRaquete, yRaquete);         
+  verificaColisaoRaquete(xRaquete2, yRaquete2);
   incluiPlacar();
   marcaPonto();
 }
@@ -76,7 +77,7 @@ function verificaColisaoBorda(){
 }
 
 function mostraRaquete(x, y){
-  rect(x, y, raqueteComprimento, raqueteAltura)
+  rect(x, y, raqueteComprimento, raqueteAltura);
 }
 
 function movimentaRaquete1(){
@@ -88,19 +89,21 @@ function movimentaRaquete1(){
   }
 }
 
-function movimentaRaquete2(){
-  velocidadeY = yBolinha - yRaquete2 - raqueteComprimento / 2 - 30;
-  yRaquete2 += velocidadeY + chanceDeErrar;
-  calculaChanceDeErrar();
+function movimentaRaqueteP2(){
+    if(keyIsDown(87)){
+    yRaquete2 -= 10;
+  }
+  if(keyIsDown(83)){
+    yRaquete2 += 10;
+  }
 }
 
  function verificaColisaoRaquete(x, y){
-   colidiu =
-    collideRectCircle(x, y, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
+   colidiu = collideRectCircle(x, y, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
    
    if(colidiu == true){
      velocidadeXBolinha *= -1;
-     raquetada.play();
+   //  raquetada.play();
    }
  }
 
@@ -121,25 +124,11 @@ function incluiPlacar(){
 function marcaPonto(){
   if(xBolinha > 590){
     pontosP1 += 1;
-    ponto.play();
+   // ponto.play();
   }
   if(xBolinha < 10){
     pontosBot += 1;
-    ponto.play();
-  }
-}
-
-function calculaChanceDeErrar() {
-  if (pontosBot >= pontosP1) {
-    chanceDeErrar += 1
-    if (chanceDeErrar >= 39){
-    chanceDeErrar = 40
-    }
-  } else {
-    chanceDeErrar -= 1
-    if (chanceDeErrar <= 35){
-    chanceDeErrar = 35
-    }
+   // ponto.play();
   }
 }
 
@@ -148,4 +137,3 @@ function bolinhaNaoFicaPresa(){
     XBolinha = 23
     }
 }
-
