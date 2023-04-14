@@ -1,6 +1,6 @@
 # Projeto-Pong
 
-Projeto realizado totalmente em JavaScript em busca de desenvolver meus conhecimentos
+Projeto realizado com foco em JavaScript em busca de desenvolver meus conhecimentos
 
 O básico está funcionando, com os modos contra bot e contra outro jogador
 
