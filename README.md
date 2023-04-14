@@ -9,7 +9,7 @@ modo vs bot:
 
 modo contra jogador:
 - primero jogador move a barra com as setas de subir e descer
-- segundo jpgador move a barra com as teclas W e S, para cima e para baixo, respectivamente
+- segundo jogador move a barra com as teclas W e S, para cima e para baixo, respectivamente
 
 funcionalidades que ainda serão adicionadas:
 - sons
